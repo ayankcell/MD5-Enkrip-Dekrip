@@ -1,5 +1,7 @@
 # Disclaimer
 
+![md5 brute force](/img/md5.gif)
+
 MD5 adalah hash bukanlah enkripsi, algoritmanya hanya satu arah. Tidak ada cara pasti untuk membalikkan / mendekripsi MD5Hash
 
 Yang ada hanyalah beberapa metode membandingkan, bukan membalikkan algoritma. Termasuk juga dengan metode bruteforce ini.
