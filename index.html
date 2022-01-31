@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>MD5 Encryption For Simple Hash By Ayayank.com</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="jquery.js"></script>
+	<link rel="shortcut icon" href="img/icon.jpg" type="image/x-icon">
+	<style>
+		body {
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+			font-family: sans-serif;
+			line-height: 2em;
+			background: #555;
+		}
+
+		a {
+			color: #cdcdcd;
+			text-decoration: none;
+			width: 100%;
+			text-align: center;
+		}
+
+		#container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1em;
+			flex-wrap: wrap;
+			padding: 3em;
+			max-width: 600px;
+			background: #21a39f;
+			border-radius: 15pt;
+		}
+
+		input[type="text"] {
+			outline: none;
+			border: none;
+			width: 100%;
+			border-radius: 5px;
+			padding: 1em;
+			margin: 2em -1em;
+			color: #3e3e3e;
+		}
+
+		.tbl {
+			padding: 1em;
+			border: 0;
+			border-radius: 5px;
+			font-weight: bold;
+			color: #fff;
+		}
+
+		#tbl-enkrip {
+			background: #3e1ce5;
+		}
+
+		#tbl-dekrip {
+			background: red;
+		}
+
+		#result-bar {
+			width: 100%;
+			background: #f0f892;
+			padding: 1em;
+			color: #5c5c5c;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+
+		<h2>Enkripsi dan Dekrip MD5</h2>
+		<input type="text" class="str" />
+		<input type="button" value="Encrypt Me!" id="tbl-enkrip" class="tbl" />
+		<input type="button" value="Decrypt Me!" id="tbl-dekrip" class="tbl" />
+		<div id="result-bar">
+			Hasil :<br />
+			<span class="hasil"></span>
+		</div>
+		<div id="disclaimer">
+			<h3>Disclaimer</h3>
+			<p>
+				Aplikasi ini hanya untuk keperluan testing saja. MD5 adalah hash bukanlah enkripsi, algoritmanya hanya satu arah.  Tidak ada cara pasti untuk membalikkan / mendekripsi MD5Hash
+			</p>
+			<p>
+				Yang ada hanyalah beberapa metode membandingkan, bukan membalikkan algoritma.  Termasuk juga dengan metode bruteforce ini.
+			</p>
+			<p>
+				Pada dasarnya metode brute-force hanya melakukan pembandingan set karakter ( lihat <i>$charset</i> di source code brute-force.php ) dengan hash yang diberikan.  Hal ini dilakukan secara rekursif ( berulang )
+			</p>
+			<p>
+				Aplikasi ini efektif untuk membalikkan hash dengan kombinasi sederhana dan pendek.  Semakin panjang dan komplek kombinasi karakter dalam hash, maka akan semakin lama proses membalikkannya.  Juga mungkin bisa membuat proses di CPU tinggi.
+			</p>
+		</div>
+		<a href="http://www.ayayank.com" title="Mengenkripsi dan mendekripsi md5">ayayank.com</a>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			$('#tbl-enkrip').click(function () {
+				var string = $('.str').val();
+				$('.hasil').html('<img src="img/loader.gif"> Loading..');
+				$('.hasil').load('encrypt.php?str=' + string);
+			});
+			$('#tbl-dekrip').click(function () {
+				var string = $('.str').val();
+				$('.hasil').html('<img src="img/loader.gif"> Loading..');
+				$('.hasil').load('brute-force.php?md5=' + string);
+			});
+		});
+	</script>
+
+</body>
+
+</html>
